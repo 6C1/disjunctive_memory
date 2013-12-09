@@ -14,17 +14,5 @@ Disjunctive memory stores data in the form of the encrypted triple [_n_(_d,x_), 
 
 ## Design
 
-The Disjunctive Memory system is designed around the following values:
-
-* Small size
-
-  The triple stored should be much smaller than the original data. This is achieved partly by outsourcing the disjunctive digit lookup to arbitrary systemic nodes.
-* Security
-
-  Each triple is encrypted via a standardized private key encryption scheme.
-* Lookup speed
-
-  D.M. selects lookup speed over save speed.
-
-Rather than storing (or generating, or calculating) disjunctive numbers locally, D.M. includes a distributed, highly redundant set of disjunctive number nodes, each of which is publicly accessible and will return arbitrary digits of given disjunctive numbers with low latency. 
+The Disjunctive Memory system comes in 
 
