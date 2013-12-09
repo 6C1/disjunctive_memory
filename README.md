@@ -1,3 +1,3 @@
-* Disjunctive Memory
+# Disjunctive Memory
 
-** A system for small-size storage of big-size data
+## A system for small-size storage of big-size data
