@@ -1,33 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
-
     <title>Disjunctive memory by 6C1</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
   </head>
-
   <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/6C1/disjunctive_memory">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/6C1/disjunctive_memory/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/6C1/disjunctive_memory/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
 
-    <header>
-      <div class="container">
-        <h1>Disjunctive memory</h1>
-        <h2>A system for small-size storage of big-size data</h2>
+    <div class="wrapper">
 
-        <section id="downloads">
-          <a href="https://github.com/6C1/disjunctive_memory/zipball/master" class="btn">Download as .zip</a>
-          <a href="https://github.com/6C1/disjunctive_memory/tarball/master" class="btn">Download as .tar.gz</a>
-          <a href="https://github.com/6C1/disjunctive_memory" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
-      </div>
-    </header>
+      <section>
+        <div id="title">
+          <h1>Disjunctive memory</h1>
+          <p>A system for small-size storage of big-size data</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/6C1">6C1</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
 
-    <div class="container">
-      <section id="main_content">
         <h1>
 <a name="disjunctive-memory" class="anchor" href="#disjunctive-memory"><span class="octicon octicon-link"></span></a>Disjunctive Memory</h1>
 
@@ -37,10 +47,34 @@
 <h3>
 <a name="disjunctiveness" class="anchor" href="#disjunctiveness"><span class="octicon octicon-link"></span></a>Disjunctiveness</h3>
 
-<p>A disjunctive sequence over an alphabet <em>A</em> is an infinite sequence, the finite subsequences of which include every finite combination of elements of <em>A</em>.</p>
-      </section>
-    </div>
+<p>A <a href="https://en.wikipedia.org/wiki/Disjunctive_sequence" title="Disjunctive Sequence on Wikipedia">disjunctive sequence</a> over an alphabet <em>A</em> is an infinite sequence, the finite subsequences of which include every finite combination of elements of <em>A</em>.</p>
 
+<p>(From this point forward, all sequences described as disjunctive will be disjunctive over the alphabet <em>A</em> = {0,1}.)</p>
+
+<h3>
+<a name="the-idea" class="anchor" href="#the-idea"><span class="octicon octicon-link"></span></a>The Idea</h3>
+
+<p>Given an arbitrary finite datum <em>d</em> and an arbitrary disjunctive sequence <em>S</em>, there exists some nonnegative integer <em>n</em> (the address of <em>d</em>) such that <em>S</em>[<em>n</em>,<em>n</em>+len(<em>d</em>)] = <em>d</em>.</p>
+
+<p>Therefore, <strong>a piece of data may be stored by just the triple (<em>S</em>,<em>n</em>,<em>d</em>).</strong></p>
+
+<h3>
+<a name="challenges" class="anchor" href="#challenges"><span class="octicon octicon-link"></span></a>Challenges</h3>
+
+<p>For an arbitrary data/sequence pair (<em>d</em>,<em>S</em>), the address <em>n</em> will be larger to store than the original data (by the Pigeonhole Principle). However, for any data there exist infinitely many disjunctive sequences with arbitrarily small <em>n</em>. The size of <em>n</em> can therefore be negotiated against savetime losses.</p>
+
+<p>Furthermore, the task of producing an arbitrary digit of a given disjunctive sequence is nontrivial.</p>
+
+<h3>
+<a name="solutions" class="anchor" href="#solutions"><span class="octicon octicon-link"></span></a>Solutions</h3>
+
+<p>The growth of savetimes can be mitigated by parallelization and pluralization. Given a piece of data <em>d</em> and a set of disjunctive sequences <em>S</em>, some number of sequences may be tested in parallel for <em>n</em> values below a chosen threshold; as soon as the <em>n</em> value associated with a particular sequence grows too large, that sequence may be discarded, and the thread applied to an as yet untested sequence.</p>
+
+<p>Digit production can be handled by a subsystem.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
   </body>
 </html>
