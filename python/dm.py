@@ -1,25 +1,25 @@
 '''
-This file is part of NormMem.
+This file is part of Disjunctive Memory.
 
-NormMem is free software: you can redistribute it and/or modify
+Disjunctive Memory is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-NormMem is distributed in the hope that it will be useful,
+Disjunctive Memory is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with NormMem.  If not, see <http://www.gnu.org/licenses/>.
+along with Disjunctive Memory.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
 import math, timeit
 
 pw = ""
 
-class NormNum():
+class DisjNum():
     def __init__(self, poly):
         # poly is the polynomial P
         self.poly = poly
@@ -100,7 +100,7 @@ def pw2poly(pw):
 def main():
     data = 42
     pswd = pw2poly(pw)
-    N = NormNum(pswd)
+    N = DisjNum(pswd)
     x = N.find(data)
     y = N.getdat(x,len(str(data)))
 
